@@ -7,6 +7,7 @@ class App extends React.Component {
     //this is the only time we do direct assignment for state
     this.state = {
       lat: null,
+      errorMessage: "",
     };
     //render method may call several time in a component so
     //we don't want to slow down it by doing some complex operations
@@ -18,13 +19,19 @@ class App extends React.Component {
         //we can;t do ....
         //this.state.lat = position.coords.latitude
       },
-      (err) => console.log(err)
+      (err) => this.setState({ errorMessage: err.message })
     );
   }
 
   //React says we must have to define render()
   render() {
-    return <div>Lattitude: {this.state.lat}</div>;
+    return (
+      <div>
+        Lattitude: {this.state.lat}
+        <br />
+        Error : {this.state.errorMessage}
+      </div>
+    );
   }
 }
 
