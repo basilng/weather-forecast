@@ -23,6 +23,14 @@ class App extends React.Component {
     );
   }
 
+  componentDidUpdate() {
+    console.log("My component was just updated -  it rerendered");
+  }
+
+  componentDidMount() {
+    console.log("my component was rendered to the screen");
+  }
+
   //React says we must have to define render()
   render() {
     if (this.state.errorMessage && !this.state.lat) {
